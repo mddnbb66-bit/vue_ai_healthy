@@ -1,13 +1,11 @@
 <template>
-    <router-view></router-view>
+        <h1>控制</h1>
 </template>
-  
+    
 <script setup lang='ts'>
-
-
-  
+    
 </script>
-  
+    
 <style>
-  
+    
 </style>

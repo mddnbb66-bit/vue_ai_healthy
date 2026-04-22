@@ -5,6 +5,7 @@
         class="mian-menu"
         @open="handleOpen"
         @close="handleClose"
+ 
       >
         <div class="brand">
           <el-image :src="imageURL" class = 'brand-img'></el-image>
@@ -13,7 +14,7 @@
             <p class="brand-subtitle">管理后台</p>
           </div>
         </div>
-        <el-menu-item v-for="item in router.options.routes[0].children"  :key="item.path" :index="item.path">
+        <el-menu-item @click="select" v-for="item in router.options.routes[0].children"  :key="item.path" :index="item.path">
           <el-icon><component :is="item.meta.icon"/></el-icon>
           <span>{{ item.meta.title }}</span>
         </el-menu-item>
@@ -27,6 +28,15 @@
 import { useRouter } from 'vue-router';
 const router = useRouter()
 const imageURL = new URL('@/assets/images/机器人.png',import.meta.url).href
+//跳转逻辑
+const select = (val)=>{
+  const currenPath = val.index
+  console.log(currenPath)
+  const beasePath = router.options.routes[0].path
+  console.log(router.options.routes[0].path)
+  console.log(`${beasePath}/${currenPath}`)
+  router.push(`${beasePath}/${currenPath}`)
+}
 console.log(`router`,router)
 </script>
     
@@ -39,7 +49,7 @@ console.log(`router`,router)
       justify-content: center;
       padding: 10px;
       background-color: #fff;
-      border-bottom: 1px,solid blacke53ety7;
+      border-bottom: 1px solid #e5e7eb;
     }
     .brand-img {
       margin-right: 10px;

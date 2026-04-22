@@ -1,12 +1,18 @@
 <template>
-        <el-aside width="200px">
+        <el-aside width="264px">
             <el-menu
         default-active="2"
-        class="el-menu-vertical-demo"
+        class="mian-menu"
         @open="handleOpen"
         @close="handleClose"
       >
-        
+        <div class="brand">
+          <el-image :src="imageURL" class = 'brand-img'></el-image>
+          <div class="info-card">
+            <h1 class="brand-title">ai心理健康助手</h1>
+            <p class="brand-subtitle">管理后台</p>
+          </div>
+        </div>
         <el-menu-item v-for="item in router.options.routes[0].children"  :key="item.path" :index="item.path">
           <el-icon><component :is="item.meta.icon"/></el-icon>
           <span>{{ item.meta.title }}</span>
@@ -17,12 +23,41 @@
 </template>
     
 <script setup lang='ts'>
-import { optionProps } from 'element-plus/es/components/select/src/option.mjs';
+
 import { useRouter } from 'vue-router';
 const router = useRouter()
+const imageURL = new URL('@/assets/images/机器人.png',import.meta.url).href
 console.log(`router`,router)
 </script>
     
-<style>
-    
+<style lang="scss" scoped>
+.mian-menu{
+  height: 100%;
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      background-color: #fff;
+      border-bottom: 1px,solid blacke53ety7;
+    }
+    .brand-img {
+      margin-right: 10px;
+      width: 50px;
+    }
+    .info-card {
+    .brand-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #1f2937;
+    }
+
+    .brand-subtitle {
+        font-size: 14px;
+        color: #6b7280;
+    }
+}
+}
+
 </style>

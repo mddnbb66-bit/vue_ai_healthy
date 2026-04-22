@@ -1,10 +1,10 @@
 <template>
-      <div class="backend-layout">
-    <el-container>
+  <div class="backend-layout">
+    <el-container class="main-context">
       <sidebar/>
-      <el-container>
-        <Navbar/>
-        <router-view></router-view>
+    <el-container>
+      <Navbar/>
+      <router-view></router-view>
       </el-container>
     </el-container>
   </div>
@@ -18,6 +18,10 @@ import Navbar from './Navbar.vue';
     
 <style lang="scss" scoped>
 .backend-layout {
-    height: 100vh
+  height: 100vh;
+
+  .main-context {
+    height: 100%;
+  }
 }
 </style>

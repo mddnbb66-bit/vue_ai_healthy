@@ -7,7 +7,9 @@
           <Navbar />
         </el-header>
         <el-main class="layout-main">
-          <router-view></router-view>
+          <div class="content-container">
+            <router-view></router-view>
+          </div>
         </el-main>
       </el-container>
     </el-container>
@@ -27,6 +29,7 @@ import Navbar from './Navbar.vue';
 
 .main-context {
   height: 100%;
+  overflow: hidden;
 }
 
 .content-context {
@@ -42,7 +45,19 @@ import Navbar from './Navbar.vue';
 }
 
 .layout-main {
+  flex: 1;
+  min-height: 0;
   padding: 16px;
   overflow: auto;
+  box-sizing: border-box;
+}
+
+.content-container {
+  min-height: 100%;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 1px 4px rgba(0,21,41,0.08);
+  padding: 16px;
+  box-sizing: border-box;
 }
 </style>

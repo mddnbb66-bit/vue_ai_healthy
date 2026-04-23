@@ -1,7 +1,7 @@
 <template>
         <div class="navbar">
                 <div class="flex-box">
-                  <el-button>
+                  <el-button @click = "handleCollapse" >
                     <el-icon><Expand/></el-icon>
                   </el-button>
                   <p class="page-title">页面标题</p>
@@ -26,7 +26,7 @@
     
 <script setup lang='ts'>
 import { ArrowDown, Expand } from '@element-plus/icons-vue';
-
+import { useAdminStore } from '../stores/admin';
 const avatarUrl = new URL('../assets/images/man.jpg', import.meta.url).href
 
 const handleCommand = (command: string) => {
@@ -36,7 +36,11 @@ const handleCommand = (command: string) => {
     console.log('退出登录');
   }
 };
-
+const useAdmin = useAdminStore()
+const handleCollapse = ()=>{
+  useAdmin.toggleContral()
+  console.log(useAdmin.contral)
+}
 </script>
     
 <style lang="scss" scoped>

@@ -1,15 +1,16 @@
 <template>
-        <el-aside width="264px">
-            <el-menu
+        <el-aside :width="useAdmin.contral ? '264px' : '64px'"  >
+            <el-menu 
         default-active="2"
         class="mian-menu"
         @open="handleOpen"
         @close="handleClose"
- 
+        :collapse="!useAdmin.contral"
+        :collapse-transition="false"
       >
-        <div class="brand">
+        <div class="brand" >
           <el-image :src="imageURL" class = 'brand-img'></el-image>
-          <div class="info-card">
+          <div class="info-card" v-show="useAdmin.contral">
             <h1 class="brand-title">ai心理健康助手</h1>
             <p class="brand-subtitle">管理后台</p>
           </div>
@@ -24,7 +25,7 @@
 </template>
     
 <script setup lang='ts'>
-
+import { useAdminStore } from '../stores/admin';
 import { useRouter } from 'vue-router';
 const router = useRouter()
 const imageURL = new URL('@/assets/images/机器人.png',import.meta.url).href
@@ -38,6 +39,8 @@ const select = (val)=>{
   router.push(`${beasePath}/${currenPath}`)
 }
 console.log(`router`,router)
+//收起和展开逻辑
+const useAdmin = useAdminStore()
 </script>
     
 <style lang="scss" scoped>

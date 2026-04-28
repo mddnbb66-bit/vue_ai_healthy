@@ -15,20 +15,24 @@
             <p class="brand-subtitle">管理后台</p>
           </div>
         </div>
-        <el-menu-item @click="select" v-for="item in router.options.routes[0].children"  :key="item.path" :index="item.path">
-          <el-icon><component :is="item.meta.icon"/></el-icon>
-          <span>{{ item.meta.title }}</span>
+        <el-menu-item @click="select" v-for="item in menuItems"  :key="item.path" :index="item.path">
+          <el-icon><component :is="item.meta?.icon"/></el-icon>
+          <span>{{ item.meta?.title || '' }}</span>
         </el-menu-item>
 
       </el-menu>
         </el-aside>
 </template>
     
-<script setup lang='ts'>
+<script setup>
 import { useAdminStore } from '../stores/admin';
 import { useRouter } from 'vue-router';
 const router = useRouter()
 const imageURL = new URL('@/assets/images/机器人.png',import.meta.url).href
+const menuItems = router.options.routes?.[0]?.children || []
+
+const handleOpen = () => {}
+const handleClose = () => {}
 //跳转逻辑
 const select = (val)=>{
   const currenPath = val.index

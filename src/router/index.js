@@ -5,6 +5,9 @@ import dashboard from '../views/dashboard.vue'
 import emotional from '../views/emotional.vue'
 import knowledge from '../views/knowledge.vue'
 import { iconPropType } from 'element-plus/es/utils/index.mjs'
+import login from '../views/login.vue'
+import register from '../views/register.vue'
+import AuthLayout from '../components/AuthLayout.vue'
 const routes = [
     //重定向，不能同一个路由对象不能同时有 component 和 redirect。如果有 redirect，路由器会跳转，不会渲染 component，导致冲突和白屏。
 
@@ -49,6 +52,26 @@ const routes = [
             },
                                                 
         ]
+    },
+    {
+      path:'/auth',
+      component : AuthLayout,
+      children:[
+        {
+          path:'login',
+          component:login,//大小写不敏感
+          meta:{
+            title:'登录',
+          }
+        },
+        {
+          path:'register',
+          component:register,
+          meta:{
+            title:'注册',
+          }
+        }
+      ]
     }
 ] 
 
